@@ -12,6 +12,7 @@ services:
       - "24225:24224/udp"
     volumes:
       - ./volumes/fluentbit/etc:/fluent-bit/etc/
+      - ./volumes/fluentbit/certs:/fluent-bit/certs
     networks:
       - efk-net
     

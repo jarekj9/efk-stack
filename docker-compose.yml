@@ -19,6 +19,7 @@ services:
       - efk-net
     volumes:
       - ./volumes/fluentd/fluent.conf:/fluentd/etc/fluent.conf
+      - ./volumes/fluentd/certs:/certs
 
   elasticsearch:
     container_name: efk_elasticsearch
