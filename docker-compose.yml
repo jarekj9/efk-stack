@@ -13,6 +13,8 @@ services:
     ports:
       - 24224:24224
       - 24224:24224/udp
+      - 5140:5140
+      - 5140:5140/udp
     networks:
       - efk-net
     volumes:
@@ -53,7 +55,7 @@ services:
     container_name: efk_log-generator
     hostname: log-generator
     image: busybox
-    command: /bin/sh -c "while true; do echo \"Log message at $(date)\"; sleep 1; done"
+    command: /bin/sh -c "while true; do echo \"$(date -u +"%Y-%m-%dT%H:%M:%S.000Z") hostname testapp [warn]:\ This is some log message.\"; sleep 1; done"
     depends_on:
       - fluentd
     restart: unless-stopped
@@ -61,6 +63,12 @@ services:
       driver: fluentd
       options:
         fluentd-address: localhost:24224
+    # logging:  # not working well
+    #   driver: syslog
+    #   options:
+    #     syslog-address: "udp://localhost:5140"
+    #     syslog-format: rfc5424
+    #     tag: "log-generator"
 
 
 volumes:

@@ -4,4 +4,4 @@ elasticsearch.hosts: [ "http://elasticsearch:9200" ]
 monitoring.ui.container.elasticsearch.enabled: true
 elasticsearch.ssl.verificationMode: "none"
 elasticsearch.username: "kibana"
-elasticsearch.password: "5VUT57ctnkns5iBEDgzO"
+elasticsearch.password: "PysF1tBAmkiEVmF0aZWd"
