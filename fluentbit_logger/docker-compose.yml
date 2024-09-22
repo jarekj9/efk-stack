@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  fluentbit:
+    container_name: fluentbit
+    hostname: fluentbit
+    #image: cr.fluentbit.io/fluent/fluent-bit  # does not contain shell to debug into it with docker exec
+    image: cr.fluentbit.io/fluent/fluent-bit:latest-debug
+    restart: unless-stopped
+    ports:
+      - "24225:24224"
+      - "24225:24224/udp"
+    volumes:
+      - ./volumes/fluentbit/etc:/fluent-bit/etc/
+    networks:
+      - efk-net
+    
+networks:
+  efk-net:
+    external: true
+    name: efk-net
