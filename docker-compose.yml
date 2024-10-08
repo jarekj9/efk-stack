@@ -64,7 +64,7 @@ services:
       driver: fluentd
       options:
         #fluentd-address: localhost:24224  # to fluentd directly
-        fluentd-address: localhost:24225   # to fluentbit ass passthrough
+        fluentd-address: localhost:24225   # to fluentbit pass passthrough, fluentbit needs to be running
     # logging:  # not working well
     #   driver: syslog
     #   options:
